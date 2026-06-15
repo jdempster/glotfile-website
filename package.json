@@ -1,0 +1,17 @@
+{
+  "name": "glotfile-website",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Marketing site and documentation for Glotfile.",
+  "license": "MIT",
+  "scripts": {
+    "docs:sync": "node scripts/sync-docs.mjs",
+    "docs:build": "node scripts/build-docs.mjs",
+    "build": "npm run docs:sync && npm run docs:build"
+  },
+  "dependencies": {
+    "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^9.2.0"
+  }
+}

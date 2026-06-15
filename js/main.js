@@ -87,3 +87,35 @@ document.querySelectorAll('.copy-btn').forEach((btn) => {
 
   setTimeout(showLine, 700);
 })();
+
+// Sticky header gains a border + denser background once the page scrolls.
+(function () {
+  const header = document.getElementById('site-header');
+  if (!header) return;
+  const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
+// Staggered reveal-on-scroll. Opt-in via body.reveal-on so nothing is hidden
+// without JS or under prefers-reduced-motion.
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) return;
+
+  document.body.classList.add('reveal-on');
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      }
+    },
+    { threshold: 0.15, rootMargin: '0px 0px -6% 0px' }
+  );
+
+  document.querySelectorAll('.reveal, .reveal-group').forEach((el) => io.observe(el));
+})();

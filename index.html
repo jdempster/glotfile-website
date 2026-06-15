@@ -16,15 +16,18 @@
 </head>
 <body>
 
-  <nav class="nav">
-    <a class="wordmark" href="#">glotfile<span class="wordmark-cursor">_</span></a>
-    <div class="nav-links">
-      <a class="nav-link" href="#how">How it works</a>
-      <a class="nav-link" href="#ui">The UI</a>
-      <a class="nav-link" href="#features">Features</a>
-      <a class="nav-npm" href="https://www.npmjs.com/package/glotfile"><span class="nav-npm-tag">npm</span> glotfile</a>
-    </div>
-  </nav>
+  <header class="site-header" id="site-header">
+    <nav class="nav">
+      <a class="wordmark" href="#">glotfile<span class="wordmark-cursor">_</span></a>
+      <div class="nav-links">
+        <a class="nav-link" href="#how">How it works</a>
+        <a class="nav-link" href="#ui">The UI</a>
+        <a class="nav-link" href="#features">Features</a>
+        <a class="nav-link" href="/docs/">Docs</a>
+        <a class="nav-npm" href="https://www.npmjs.com/package/glotfile"><span class="nav-npm-tag">npm</span> glotfile</a>
+      </div>
+    </nav>
+  </header>
 
   <header class="hero">
     <div class="hero-copy">
@@ -50,9 +53,9 @@
         </div>
         <div class="terminal-body" id="terminal">
           <div class="t-line"><span class="t-prompt">$ </span><span class="t-w t-cmd">npx glotfile</span></div>
-          <div class="t-line"><span class="t-m">glotfile v0.9.0 — local translation manager</span></div>
+          <div class="t-line"><span class="t-m">glotfile v1.0.0 — local translation manager</span></div>
           <div class="t-line"><span class="t-g">✓ </span><span class="t-w">found glotfile.json</span><span class="t-m"> · 142 keys · 8 locales</span></div>
-          <div class="t-line"><span class="t-g">✓ </span><span class="t-w">ui on </span><span class="t-i">http://127.0.0.1:4242</span><span class="t-m"> — opened in browser</span></div>
+          <div class="t-line"><span class="t-g">✓ </span><span class="t-w">ui on </span><span class="t-i">http://127.0.0.1:3000</span><span class="t-m"> — opened in browser</span></div>
           <div class="t-line"></div>
           <div class="t-line"><span class="t-prompt">$ </span><span class="t-w t-cmd">glotfile translate --locale fr,pl</span></div>
           <div class="t-line"><span class="t-g">✓ </span><span class="t-w">23 strings translated</span><span class="t-m"> · claude · 4.2s</span></div>
@@ -68,7 +71,7 @@
   <section class="band" aria-labelledby="problem-heading">
     <div class="container container-narrow">
       <h2 id="problem-heading">Two ways this usually goes.</h2>
-      <div class="problem-grid">
+      <div class="problem-grid reveal-group">
         <article class="card">
           <p class="card-kicker">STATUS QUO №1</p>
           <h3>Hand-editing locale files</h3>
@@ -85,7 +88,7 @@
   </section>
 
   <section id="how" aria-labelledby="how-heading">
-    <div class="container how">
+    <div class="container how reveal-group">
       <h2 id="how-heading">How it works</h2>
 
       <div class="beat">
@@ -110,7 +113,7 @@
             <div class="browser">
               <div class="browser-bar">
                 <span class="dot dot-1"></span><span class="dot dot-2"></span><span class="dot dot-3"></span>
-                <span class="browser-url">127.0.0.1:3001/#editor</span>
+                <span class="browser-url">127.0.0.1:3000/#editor</span>
               </div>
               <img src="assets/screenshots/editor.png" alt="The glotfile editor: one key shown across English (source), Arabic (right-to-left), German, Spanish, French, Japanese and Polish, each row tagged with its review state — reviewed, machine, or needs review." width="3024" height="1746" loading="lazy" decoding="async">
             </div>
@@ -150,15 +153,15 @@
   <section id="ui" aria-labelledby="ui-heading">
     <div class="container">
       <div class="ui-head">
-        <h2 id="ui-heading">Not a mockup — the actual UI, on localhost.</h2>
-        <p class="section-lede">One <code>npx glotfile</code> opens this on <code>127.0.0.1</code>: dark mode, right-to-left, plurals, a “can I ship?” release gate, and an audit log of every AI call — all reading and writing the one JSON file in your repo.</p>
+        <h2 id="ui-heading">The whole UI runs on localhost.</h2>
+        <p class="section-lede">Run <code>npx glotfile</code> and it opens on <code>127.0.0.1</code> — dark mode, right-to-left, plurals, a “can I ship?” release gate, and an audit log of every AI call. Every panel reads and writes the one JSON file you commit.</p>
       </div>
-      <div class="shots">
+      <div class="shots reveal-group">
         <figure class="shot">
           <div class="browser">
             <div class="browser-bar">
               <span class="dot dot-1"></span><span class="dot dot-2"></span><span class="dot dot-3"></span>
-              <span class="browser-url">127.0.0.1:3001/#analytics</span>
+              <span class="browser-url">127.0.0.1:3000/#analytics</span>
             </div>
             <img src="assets/screenshots/analytics.png" alt="Glotfile analytics: a ‘can I ship?’ release gate and per-locale readiness cards showing translation completion for Arabic, German, Spanish, French, Japanese and Polish." width="3024" height="1746" loading="lazy" decoding="async">
           </div>
@@ -168,7 +171,7 @@
           <div class="browser">
             <div class="browser-bar">
               <span class="dot dot-1"></span><span class="dot dot-2"></span><span class="dot dot-3"></span>
-              <span class="browser-url">127.0.0.1:3001/#activity</span>
+              <span class="browser-url">127.0.0.1:3000/#activity</span>
             </div>
             <img src="assets/screenshots/activity.png" alt="Glotfile activity log: AI translation batches tagged with the model used, an expandable system prompt, and before-and-after diffs for each edited string." width="3024" height="1746" loading="lazy" decoding="async">
           </div>
@@ -181,7 +184,7 @@
   <section id="features" class="band" aria-labelledby="features-heading">
     <div class="container">
       <h2 id="features-heading">Built like a tool, not a platform.</h2>
-      <div class="features-grid">
+      <div class="features-grid reveal-group">
         <article class="card">
           <p class="feature-glyph" aria-hidden="true">$_</p>
           <h3>Zero infrastructure</h3>
@@ -193,14 +196,24 @@
           <p class="card-body">One deterministic state file, committed with your code. Review translations the way you review everything else: in the PR.</p>
         </article>
         <article class="card">
+          <p class="feature-glyph" aria-hidden="true">⎇</p>
+          <h3>Lives on your branch</h3>
+          <p class="card-body">New strings travel on the feature branch that introduced them — merge, rebase, and revert them alongside the code. No drift between branches, no separate platform to keep in sync.</p>
+        </article>
+        <article class="card">
           <p class="feature-glyph" aria-hidden="true">✦</p>
           <h3>AI translation, your provider</h3>
           <p class="card-body">Anthropic, OpenAI, Bedrock, OpenRouter, Claude Code — or Ollama, fully offline. Your key, your model, your bill.</p>
         </article>
         <article class="card">
+          <p class="feature-glyph" aria-hidden="true">//</p>
+          <h3>Context, not guesswork</h3>
+          <p class="card-body">Every key can carry context — a usage note, the code locations that reference it, even a screenshot. Glotfile sends that to the model, so an ambiguous “Post” comes back as the right verb or noun.</p>
+        </article>
+        <article class="card">
           <p class="feature-glyph" aria-hidden="true">{}</p>
           <h3>Speaks your framework</h3>
-          <p class="card-body">First-class export to Flutter ARB, Laravel PHP, i18next and vue-i18n JSON, gettext .po, and Apple .stringsdict.</p>
+          <p class="card-body">First-class export to Flutter ARB, Laravel PHP, i18next &amp; vue-i18n JSON, Angular XLIFF, Rails YAML, gettext .po, and Apple .strings/.stringsdict.</p>
         </article>
         <article class="card">
           <p class="feature-glyph" aria-hidden="true">✓</p>
@@ -217,16 +230,18 @@
   </section>
 
   <section aria-label="Supported formats and AI providers">
-    <div class="container stack-strip">
+    <div class="container stack-strip reveal-group">
       <div class="stack-col">
         <p class="stack-label">EXPORTS TO</p>
         <ul class="badge-list">
           <li>Flutter ARB</li>
           <li>Laravel PHP</li>
           <li>i18next JSON</li>
-          <li>vue-i18n</li>
+          <li>vue-i18n JSON</li>
+          <li>Angular XLIFF</li>
+          <li>Rails YAML</li>
           <li>gettext .po</li>
-          <li>Apple .stringsdict</li>
+          <li>Apple .strings/.stringsdict</li>
         </ul>
       </div>
       <div class="stack-col">
@@ -244,7 +259,7 @@
   </section>
 
   <section class="band" aria-labelledby="trust-heading">
-    <div class="container trust">
+    <div class="container trust reveal-group">
       <div class="trust-copy">
         <h2 id="trust-heading">Local-first means local.</h2>
         <p>The server binds to <code>127.0.0.1</code> and nowhere else. Your strings travel exactly two places: your git remote, and the AI provider you configure — point it at Ollama and it's just git.</p>
@@ -273,7 +288,7 @@
     </div>
     <div class="footer-meta">
       <span>glotfile · MIT licensed</span>
-      <span>built for people who'd rather commit than sync</span>
+      <span>translations that live in your repo, not someone else's database</span>
     </div>
   </footer>
 
