@@ -13,6 +13,7 @@ With no flags, only **empty** values are filled — existing translations are le
 | Option | Description |
 |---|---|
 | `--all` | Re-translate every string, not just empty values (still never overwrites `reviewed`). |
+| `--state <list>` | Re-translate only targets currently in these states (comma list of `missing`, `machine`, `needs-review`, `reviewed`). Default is `missing`. |
 | `--estimate` | Print the batches, token counts and estimated cost without translating. |
 | `--locale <list>` | Only these target languages, comma-separated (e.g. `fr,de`). Alias: `--locales`. |
 | `--key <glob>` | Only keys matching a glob (e.g. `"auth.*"`). |
@@ -21,11 +22,14 @@ With no flags, only **empty** values are filled — existing translations are le
 ```bash
 glotfile translate                           # fill the gaps (only empty values)
 glotfile translate --all                     # redo every non-reviewed value
+glotfile translate --state needs-review      # re-do just the strings a source edit invalidated
 glotfile translate --locale fr,de            # only French and German
 glotfile translate --key "auth.*"            # only the auth namespace
 glotfile translate --all --locale fr --key "checkout.*"
 glotfile translate --estimate                # batches, tokens and cost — no API calls
 ```
+
+The key use of `--state` is **`--state needs-review`**: when you edit a source string, its translations are flagged `needs-review` (stale). A plain `glotfile translate` skips them (they aren't empty) and `--all` would also overwrite good `reviewed` values elsewhere — `--state needs-review` re-translates exactly what the edit invalidated. See Editing from the CLI.
 
 ## What it prints
 

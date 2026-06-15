@@ -46,6 +46,8 @@ export const SECTIONS = [
     pages: [
       'CLI Overview',
       'Serve',
+      'Reading and Extraction',
+      'Editing from the CLI',
       'Translate',
       'Export',
       'Lint and Check',
