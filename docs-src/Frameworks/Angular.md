@@ -29,6 +29,7 @@ The untranslated `messages.xlf` stays owned by Angular; glotfile only writes the
 ## Format notes
 
 - **Placeholders** — `{name}` ↔ `<x id="INTERPOLATION" equiv-text="{{name}}"/>`.
+- **Literals** — mark literal text with ICU apostrophe quoting (`'{site}'`) and it renders as plain text instead of an `<x/>` placeholder. Apostrophe quoting is ICU's native escape, so it round-trips fully. See Placeholders and ICU.
 - **Plurals** — native ICU using Angular's `VAR_PLURAL` argument.
 - **Locale codes** — default to BCP-47 hyphen (`messages.pt-BR.xlf`), written into the `target-language` attribute. See Output Formats.
 

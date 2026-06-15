@@ -14,15 +14,15 @@ Glotfile is designed to run with **no install** via `npx`:
 npx glotfile
 ```
 
-> **⚠ Pre-1.0: run from a checkout for now** — Glotfile is pre-1.0 and not yet published to npm. Until it is, run it from a clone of the repo:
->
-> ```bash
-> npm install
-> npm run build          # builds the UI + server into dist/
-> node bin/glotfile.js   # equivalent to the `glotfile` command
-> ```
+Or install it globally:
 
-Once published, `npx glotfile <command>` and a global install will both work. Throughout these docs, `glotfile <command>` and `node bin/glotfile.js <command>` are interchangeable.
+```bash
+npm i -g glotfile
+```
+
+> **⚠ Pre-1.0** — Glotfile is published to npm but still pre-1.0, so expect occasional breaking changes; pin a version (e.g. `npx glotfile@0.8.7`) if you need stability.
+
+Throughout these docs, `glotfile <command>` and `node bin/glotfile.js <command>` are interchangeable.
 
 ## First run
 

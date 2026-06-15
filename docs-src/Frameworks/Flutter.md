@@ -37,6 +37,7 @@ Set `generate: true` under `flutter:` in `pubspec.yaml`, then `flutter gen-l10n`
 ## Format notes
 
 - **Placeholders** — ICU `{name}` is preserved as-is. Glotfile writes the `@key` placeholder metadata that `gen_l10n` needs to compile typed arguments.
+- **Literals** — mark literal text with ICU apostrophe quoting (`'{site}'`); it is preserved verbatim (apostrophe quoting is ICU's native escape) and excluded from the `@key` placeholder metadata. Fully escapable. See Placeholders and ICU.
 - **Plurals** — emitted as native inline ICU: `{count, plural, one {1 item} other {# items}}`.
 - **Locale codes** — default to BCP-47 underscore (`app_en.arb`, `app_zh_Hant.arb`), written into `@@locale`. Flutter rejects some script subtags; remap with `localeMap`, e.g. `"localeMap": { "zh-hant": "zh_HK" }`. See Output Formats.
 

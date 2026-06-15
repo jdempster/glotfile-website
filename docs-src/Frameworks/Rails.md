@@ -39,6 +39,7 @@ Rails auto-loads `config/locales/**/*.yml`. Use `I18n.t('auth.sign_in')`, or the
 ## Format notes
 
 - **Placeholders** — `{name}` is rendered as Rails' `%{name}`.
+- **Literals** — mark literal text with ICU apostrophe quoting (`'{site}'`); it exports as plain `{site}` (Rails interpolates `%{name}`, so bare braces are literal) and round-trips. A literal `%` is best-effort. See Placeholders and ICU.
 - **Plurals** — a nested CLDR subtree (`one:` / `other:` / …) that Rails pluralises via `count:`.
 - **Locale codes** — default to BCP-47 hyphen (`pt-BR.yml`) and are written as the top-level key. See Output Formats.
 

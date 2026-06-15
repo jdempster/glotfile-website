@@ -3,7 +3,7 @@
 ## Setup
 
 **`glotfile: command not found`**
-It's pre-1.0 and not yet on npm. Run from a checkout: `npm install && npm run build && node bin/glotfile.js`. See Installation.
+Run it with `npx glotfile` (no global install needed), or install globally with `npm i -g glotfile`. From a checkout, build first: `npm install && npm run build && node bin/glotfile.js`. See Installation.
 
 **Wrong Node version**
 Glotfile needs Node `^20.19.0 || >=22.12.0`. Check with `node -v`.

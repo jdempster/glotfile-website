@@ -32,20 +32,55 @@ time like `(h:m)`, a ratio `a:b`) for a placeholder.
 > **export-only and lossy** — they sit outside the canonical guarantee. See
 > *Lossy conversions* below.
 
-## Escaping a literal `{name}`
+## Literals — text that looks like a placeholder
 
-To write text that *looks* like a placeholder but should be left alone, use
-**ICU apostrophe quoting**:
+To write text that *looks* like a placeholder but should be left alone, mark it
+with **ICU apostrophe quoting**:
 
-| You write | You get |
+| You write | Means |
 |---|---|
 | `'{'` | a literal `{` |
 | `'{name}'` | the literal text `{name}` (not a token) |
 | `''` | a literal apostrophe `'` |
 
-Quoted spans are treated as plain text, so `'{name}'` is never flagged by the
-checks or altered by AI translation. ARB output (ICU) preserves the quoting on
-round-trip.
+Quoted spans are treated as plain text everywhere: the editor doesn't highlight
+them, the `placeholder-mismatch` check ignores them, and AI translation leaves
+them untouched.
+
+On **export**, each format renders a literal in its own native way so the
+runtime won't interpolate it:
+
+| Format | A literal `'{site}'` exports as | A literal `%` | Fully escapable? |
+|---|---|---|---|
+| Flutter ARB / Angular | `'{site}'` (ICU apostrophe — native) | — | ✅ |
+| Vue I18n | `{'{site}'}` (vue literal interpolation) | — | ✅ |
+| gettext / Apple | `{site}` (braces are plain text) | `%%` | ✅ |
+| Rails YAML | `{site}` (braces are plain text) | best-effort | ✅ (braces) |
+| **i18next** | `{site}` — but a literal `{{site}}` is emitted as-is | — | ⚠️ partial |
+| **Laravel** | `{site}` — but a literal `:name` can't be protected | — | ⚠️ partial |
+
+### Two formats can't fully escape
+
+Neither **i18next** (`{{ }}`) nor **Laravel** (`:name`) has a way to mark its
+own interpolation syntax as literal, so glotfile emits the best it can and
+**warns** with `lossy-literal`:
+
+- **i18next** — a literal whose content is a `{{name}}` token (you wrote
+  `'{{site}}'`) is written verbatim and i18next *will* substitute it at runtime.
+  A single-brace literal `'{site}'` → `{site}` is safe, since i18next only
+  interpolates `{{ }}`.
+- **Laravel** — a literal `:name` that matches a real placeholder in the *same*
+  string collapses to the same `:name`, and Laravel interpolates both.
+
+```
+warning [lossy-literal] tpl @ en: i18next will interpolate a literal containing {{…}}; i18next has no escape for it
+```
+
+On **import**, the inverse runs wherever it's unambiguous: vue `{'…'}`, ICU
+apostrophes, and a bare `{name}` in a Laravel/Rails file (whose interpolation is
+`:name`/`%{name}`, so braces are literal) all become canonical literals.
+i18next import stays **lenient** — a single-brace `{name}` is kept as a
+placeholder — so an i18next literal round-trip is best-effort.
 
 ## ICU plural and select
 

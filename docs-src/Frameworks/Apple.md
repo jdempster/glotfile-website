@@ -31,6 +31,7 @@ Xcode picks up `.lproj` resources automatically once they're in the bundle. Use 
 ## Format notes
 
 - **Placeholders** — printf style (`%@`, `%d`).
+- **Literals** — mark literal text with ICU apostrophe quoting (`'{site}'`); it exports as plain `{site}`, and a literal `%` is escaped to `%%` so printf won't misread it. Fully escapable. See Placeholders and ICU.
 - **Plurals** — live only in `.stringsdict`, keyed by CLDR categories (`one`, `other`, …) with an `NSStringPluralRuleType` spec.
 - **Locale codes** — default to BCP-47 hyphen (`en.lproj`, `pt-BR.lproj`). See Output Formats.
 

@@ -37,6 +37,7 @@ Use `t('auth.signIn.button')` in templates; pass a count for plurals: `t('cart.i
 ## Format notes
 
 - **Placeholders** — `{name}` is used verbatim (Vue I18n's named-interpolation syntax).
+- **Literals** — mark literal text with ICU apostrophe quoting (`'{site}'`); it exports as Vue's literal interpolation `{'{site}'}` so Vue renders it verbatim instead of substituting. Fully escapable. See Placeholders and ICU.
 - **Plurals** — pipe-separated forms (`one | other`), Vue I18n's choice format.
 - **Locale codes** — default to lower-hyphen (`fr.json`, `pt-br.json`). See Output Formats.
 

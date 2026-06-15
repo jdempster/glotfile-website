@@ -31,6 +31,7 @@ Nothing to generate: Laravel reads the PHP arrays directly. Use `__('auth.signIn
 ## Format notes
 
 - **Placeholders** — `{name}` is rendered as Laravel's `:name`.
+- **Literals** — mark literal text with ICU apostrophe quoting (`'{site}'`); it exports as plain `{site}` (Laravel interpolates `:name`, so braces are literal) and round-trips. **Partial:** Laravel has no escape for `:name` itself, so a literal `:name` matching a real placeholder in the same string can't be protected — glotfile emits a `lossy-literal` warning. See Placeholders and ICU.
 - **Plurals** — pipe-separated forms (`one|other`) consumed by `trans_choice()`.
 - **Locale codes** — default to BCP-47 with underscores (`lang/pt_BR/…`, `lang/zh_HK/…`); bare codes like `fr` stay bare. This matches Laravel's loader, which keys off underscore + uppercase-region directory names. Override per output with `localeCase`. See Output Formats.
 
