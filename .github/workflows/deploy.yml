@@ -32,7 +32,7 @@ jobs:
       - name: Assemble publish directory
         run: |
           mkdir -p _site
-          cp -R index.html favicon.svg css js assets docs _site/
+          cp -R index.html favicon.svg css js assets docs schema _site/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

@@ -1,0 +1,352 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://glotfile.dev/schema/v1.json",
+  "title": "Glotfile state file",
+  "description": "Schema for glotfile.json — the single source of truth for a Glotfile translation catalog. See https://glotfile.dev/docs/concepts/the-state-file/.",
+  "type": "object",
+  "required": ["version", "config", "keys"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri",
+      "description": "JSON Schema reference. Stamped automatically; enables editor autocomplete and validation."
+    },
+    "version": {
+      "type": "integer",
+      "description": "On-disk data version. Currently 1."
+    },
+    "config": { "$ref": "#/definitions/Config" },
+    "glossary": {
+      "type": "array",
+      "description": "Do-not-translate terms and forced per-locale translations, injected into every AI request.",
+      "items": { "$ref": "#/definitions/GlossaryEntry" }
+    },
+    "keys": {
+      "type": "object",
+      "description": "Flat map of dot-notation keys (e.g. \"auth.signIn.button\") to their entries.",
+      "additionalProperties": { "$ref": "#/definitions/KeyEntry" }
+    }
+  },
+  "definitions": {
+    "Config": {
+      "type": "object",
+      "description": "Project configuration.",
+      "required": ["sourceLocale", "locales", "outputs", "format"],
+      "properties": {
+        "sourceLocale": {
+          "type": "string",
+          "description": "The locale you author in. Must be one of `locales`."
+        },
+        "locales": {
+          "type": "array",
+          "description": "Every locale (BCP-47) you maintain, including the source.",
+          "items": { "type": "string" }
+        },
+        "outputs": {
+          "type": "array",
+          "description": "Where exported locale files are written — one entry per format.",
+          "items": { "$ref": "#/definitions/OutputConfig" }
+        },
+        "format": { "$ref": "#/definitions/FormatConfig" },
+        "ai": { "$ref": "#/definitions/AiConfig" },
+        "spelling": { "$ref": "#/definitions/SpellingConfig" },
+        "lint": { "$ref": "#/definitions/LintConfig" },
+        "scan": { "$ref": "#/definitions/ScanConfig" },
+        "autoExport": {
+          "type": "boolean",
+          "default": true,
+          "description": "When true (default), `glotfile serve` re-exports to disk on every change."
+        },
+        "exportLocales": {
+          "type": "array",
+          "description": "Allow-list narrowing which locales every export writes. Empty/absent = all of `locales`.",
+          "items": { "type": "string" }
+        },
+        "storage": {
+          "enum": ["single", "split"],
+          "description": "On-disk layout. \"split\" persists the catalog as a glotfile/ directory of per-locale files; absent/\"single\" keeps the monolithic glotfile.json."
+        }
+      }
+    },
+    "OutputConfig": {
+      "type": "object",
+      "required": ["adapter", "path"],
+      "properties": {
+        "adapter": {
+          "type": "string",
+          "description": "Export format id, e.g. \"flutter-arb\", \"laravel-php\", \"i18next-json\", \"gettext-po\", \"apple-stringsdict\", \"angular-xliff\", \"rails-yaml\"."
+        },
+        "path": {
+          "type": "string",
+          "description": "Path template. {locale} and {namespace} are substituted."
+        },
+        "style": { "type": "string" },
+        "emptyAs": {
+          "enum": ["source", "empty", "omit"],
+          "description": "How to render a missing/empty value."
+        },
+        "indent": { "type": "number" },
+        "finalNewline": { "type": "boolean" },
+        "includeLocale": { "type": "boolean" },
+        "skipSourceLocale": {
+          "type": "boolean",
+          "description": "Don't write a file for the source locale (e.g. Angular, whose generator owns messages.xlf)."
+        },
+        "localeAliases": {
+          "type": "object",
+          "additionalProperties": { "type": "array", "items": { "type": "string" } }
+        },
+        "localeCase": { "$ref": "#/definitions/LocaleCase" },
+        "localeMap": {
+          "type": "object",
+          "description": "Per-locale exact override (canonical code -> export token). Wins over localeCase.",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
+    "LocaleCase": {
+      "enum": ["lower-hyphen", "lower-underscore", "bcp47-hyphen", "bcp47-underscore"],
+      "description": "Locale-code rendering style for {locale} path/file tokens. Unset = the adapter's default."
+    },
+    "AiConfig": {
+      "type": "object",
+      "description": "Which model translates and how.",
+      "required": ["provider", "model"],
+      "properties": {
+        "provider": {
+          "enum": ["anthropic", "openai", "bedrock", "openrouter", "ollama", "claude-code"],
+          "description": "Translation backend."
+        },
+        "model": {
+          "type": "string",
+          "description": "Model id for the selected provider."
+        },
+        "endpoint": {
+          "type": ["string", "null"],
+          "description": "Custom API endpoint (e.g. an OpenAI-compatible gateway), or null."
+        },
+        "region": {
+          "type": ["string", "null"],
+          "description": "Region for the provider (e.g. AWS Bedrock), or null."
+        },
+        "batchSize": {
+          "type": "number",
+          "description": "How many strings to send per request."
+        },
+        "concurrency": {
+          "type": "number",
+          "description": "How many locales to translate in parallel. Defaults to 3."
+        },
+        "vision": {
+          "type": "boolean",
+          "description": "Send screenshots to vision-capable models."
+        },
+        "promptStyle": { "enum": ["default", "translategemma"] },
+        "contextBatchSize": { "type": "number" },
+        "contextConcurrency": { "type": "number" },
+        "inputPricePerMTok": {
+          "type": "number",
+          "description": "$ per 1M input tokens; overrides the built-in price table when both prices are set."
+        },
+        "outputPricePerMTok": {
+          "type": "number",
+          "description": "$ per 1M output tokens; overrides the built-in price table when both prices are set."
+        }
+      }
+    },
+    "FormatConfig": {
+      "type": "object",
+      "description": "Deterministic serialization settings that keep git diffs minimal.",
+      "required": ["indent", "sortKeys", "finalNewline"],
+      "properties": {
+        "indent": { "type": "number" },
+        "sortKeys": { "type": "boolean" },
+        "finalNewline": { "type": "boolean" }
+      }
+    },
+    "SpellingConfig": {
+      "type": "object",
+      "required": ["customWords"],
+      "properties": {
+        "customWords": {
+          "type": "array",
+          "description": "Words accepted by both the editor's live spell check and the `spelling` lint rule.",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "LintConfig": {
+      "type": "object",
+      "properties": {
+        "rules": {
+          "type": "object",
+          "description": "Per-rule severity overrides, keyed by rule id.",
+          "additionalProperties": { "enum": ["error", "warn", "off"] }
+        },
+        "ignore": {
+          "type": "array",
+          "description": "Key globs to skip when linting.",
+          "items": { "type": "string" }
+        },
+        "spelling": {
+          "type": "object",
+          "properties": {
+            "locales": {
+              "type": "object",
+              "additionalProperties": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "ScanConfig": {
+      "type": "object",
+      "properties": {
+        "include": { "type": "array", "items": { "type": "string" } },
+        "exclude": { "type": "array", "items": { "type": "string" } },
+        "accessors": {
+          "type": "array",
+          "description": "Extra Flutter gen_l10n accessor names the scanner should recognize.",
+          "items": { "type": "string" }
+        },
+        "patterns": {
+          "type": "array",
+          "description": "Custom usage-scan regexes (capture group 1 = key) applied to every file.",
+          "items": { "type": "string" }
+        },
+        "keep": {
+          "type": "array",
+          "description": "Key globs always treated as used, for keys consumed by code the scanner can't see.",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "GlossaryEntry": {
+      "type": "object",
+      "required": ["term"],
+      "properties": {
+        "term": { "type": "string" },
+        "doNotTranslate": { "type": "boolean" },
+        "caseSensitive": { "type": "boolean" },
+        "translations": {
+          "type": "object",
+          "description": "Forced translation per locale.",
+          "additionalProperties": { "type": "string" }
+        },
+        "notes": { "type": "string" }
+      }
+    },
+    "KeyEntry": {
+      "type": "object",
+      "required": ["values"],
+      "properties": {
+        "context": {
+          "type": "string",
+          "description": "Context for humans and the AI translator."
+        },
+        "contextSource": {
+          "enum": ["ai"],
+          "description": "Set when the context was AI-generated."
+        },
+        "contextAt": { "type": "string" },
+        "notes": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Note" }
+        },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "maxLength": {
+          "type": "number",
+          "description": "Maximum character length; over-length translations are rejected."
+        },
+        "description": { "type": "string" },
+        "screenshot": {
+          "type": "string",
+          "description": "Path/ref to an image showing where the string appears."
+        },
+        "skipTranslate": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "plural": {
+          "type": "object",
+          "description": "Presence marks this key as a plural message.",
+          "required": ["arg"],
+          "properties": {
+            "arg": {
+              "type": "string",
+              "description": "The count token name."
+            }
+          }
+        },
+        "placeholders": {
+          "type": "object",
+          "description": "Typed placeholder metadata, keyed by placeholder name.",
+          "additionalProperties": { "$ref": "#/definitions/PlaceholderMeta" }
+        },
+        "suppressions": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Suppression" }
+        },
+        "values": {
+          "type": "object",
+          "description": "One entry per locale.",
+          "additionalProperties": { "$ref": "#/definitions/LocaleValue" }
+        }
+      }
+    },
+    "LocaleValue": {
+      "type": "object",
+      "description": "Scalar keys carry `value`; plural keys carry `forms` — exactly one, per the owning key's plural marker.",
+      "required": ["state"],
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "The translation (scalar keys)."
+        },
+        "forms": {
+          "type": "object",
+          "description": "ICU plural forms (plural keys). Keys are CLDR categories or exact selectors like \"=0\"; must include \"other\".",
+          "propertyNames": { "pattern": "^(zero|one|two|few|many|other|=\\d+)$" },
+          "additionalProperties": { "type": "string" }
+        },
+        "state": { "$ref": "#/definitions/LocaleState" },
+        "source": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      }
+    },
+    "LocaleState": {
+      "enum": ["source", "machine", "reviewed", "needs-review"],
+      "description": "Review state of this value."
+    },
+    "PlaceholderMeta": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string" },
+        "format": { "type": "string" },
+        "example": { "type": "string" },
+        "origin": {
+          "enum": ["x"],
+          "description": "Set when captured from an Angular <x/> element with a non-conventional id."
+        }
+      }
+    },
+    "Note": {
+      "type": "object",
+      "required": ["id", "text", "at"],
+      "properties": {
+        "id": { "type": "string" },
+        "text": { "type": "string" },
+        "at": { "type": "string" }
+      }
+    },
+    "Suppression": {
+      "type": "object",
+      "description": "A dismissed lint finding for one (rule, locale). Expires when the key's source content hash changes.",
+      "required": ["rule", "locale", "source"],
+      "properties": {
+        "rule": { "type": "string" },
+        "locale": { "type": "string" },
+        "source": { "type": "string" },
+        "at": { "type": "string" }
+      }
+    }
+  }
+}
