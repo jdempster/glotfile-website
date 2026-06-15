@@ -1,0 +1,6 @@
+node_modules/
+
+# Generated docs site output — built in CI from docs-src/
+docs/
+
+.DS_Store

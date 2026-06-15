@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Glotfile — your translations belong in your repo</title>
+  <meta name="description" content="Glotfile is a local-first, git-native translation manager. One JSON file in your repo, a local web UI, AI translation with your own key, export to Flutter ARB, Laravel PHP, i18next, gettext and Apple formats.">
+  <meta property="og:title" content="Glotfile — your translations belong in your repo">
+  <meta property="og:description" content="A local-first, git-native translation manager. Run npx glotfile — no platform, no account.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <a class="wordmark" href="#">glotfile<span class="wordmark-cursor">_</span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="#how">How it works</a>
+      <a class="nav-link" href="#ui">The UI</a>
+      <a class="nav-link" href="#features">Features</a>
+      <a class="nav-npm" href="https://www.npmjs.com/package/glotfile"><span class="nav-npm-tag">npm</span> glotfile</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-copy">
+      <p class="hero-badge">local-first · git-native · MIT</p>
+      <h1>Your translations belong in <span class="accent">your repo.</span></h1>
+      <p class="hero-lede">Glotfile is a translation manager that lives in one JSON file, committed next to your code. Edit in a local web UI, translate with your own AI key, export to your framework's locale format. No platform, no account — nothing leaves your machine except the AI calls you choose to make.</p>
+      <div class="hero-cta">
+        <div class="cmd-pill">
+          <span class="prompt" aria-hidden="true">$</span>
+          <code>npx glotfile</code>
+          <button class="copy-btn" type="button" data-copy="npx glotfile">copy</button>
+        </div>
+        <a class="hero-npm-link" href="https://www.npmjs.com/package/glotfile">or view it on npm ↗</a>
+      </div>
+      <p class="hero-fineprint">Node 20+ · runs on 127.0.0.1 · delete glotfile.json and it's like it never happened</p>
+    </div>
+
+    <div class="hero-terminal">
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="dot dot-1"></span><span class="dot dot-2"></span><span class="dot dot-3"></span>
+          <span class="terminal-title">~/your-app</span>
+        </div>
+        <div class="terminal-body" id="terminal">
+          <div class="t-line"><span class="t-prompt">$ </span><span class="t-w t-cmd">npx glotfile</span></div>
+          <div class="t-line"><span class="t-m">glotfile v0.9.0 — local translation manager</span></div>
+          <div class="t-line"><span class="t-g">✓ </span><span class="t-w">found glotfile.json</span><span class="t-m"> · 142 keys · 8 locales</span></div>
+          <div class="t-line"><span class="t-g">✓ </span><span class="t-w">ui on </span><span class="t-i">http://127.0.0.1:4242</span><span class="t-m"> — opened in browser</span></div>
+          <div class="t-line"></div>
+          <div class="t-line"><span class="t-prompt">$ </span><span class="t-w t-cmd">glotfile translate --locale fr,pl</span></div>
+          <div class="t-line"><span class="t-g">✓ </span><span class="t-w">23 strings translated</span><span class="t-m"> · claude · 4.2s</span></div>
+          <div class="t-line"></div>
+          <div class="t-line"><span class="t-prompt">$ </span><span class="t-w t-cmd">git diff --stat</span></div>
+          <div class="t-line"><span class="t-w"> glotfile.json | 46 </span><span class="t-g">++++++++++++++</span></div>
+          <div class="t-line"><span class="t-m"> 1 file changed, 46 insertions(+)</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="band" aria-labelledby="problem-heading">
+    <div class="container container-narrow">
+      <h2 id="problem-heading">Two ways this usually goes.</h2>
+      <div class="problem-grid">
+        <article class="card">
+          <p class="card-kicker">STATUS QUO №1</p>
+          <h3>Hand-editing locale files</h3>
+          <p class="card-body">Eleven JSON files that drift apart quietly. A Polish fix pasted in from an email. Nobody knows why <code>de.json</code> has three keys the others don't.</p>
+        </article>
+        <article class="card">
+          <p class="card-kicker">STATUS QUO №2</p>
+          <h3>Renting a translation platform</h3>
+          <p class="card-body">Your strings live in someone else's database and come back as bot PRs. You pay per seat, per word, per month — for access to your own copy.</p>
+        </article>
+      </div>
+      <p class="problem-take">Glotfile's take: <strong>translations are code.</strong> Put them in the repo, review them in PRs, and both problems stop existing.</p>
+    </div>
+  </section>
+
+  <section id="how" aria-labelledby="how-heading">
+    <div class="container how">
+      <h2 id="how-heading">How it works</h2>
+
+      <div class="beat">
+        <div class="beat-copy">
+          <p class="beat-number">01</p>
+          <h3>Start from what you have</h3>
+          <p>Run it in your project. Glotfile finds your existing ARB, PHP, JSON or <code>.po</code> files, imports every key, and writes one deterministic <code>glotfile.json</code>. No config, no account.</p>
+        </div>
+        <div class="beat-visual">
+          <div class="code-card">
+            <div class="t-line"><span class="t-prompt">$ </span><span class="t-w">npx glotfile import</span></div>
+            <div class="t-line"><span class="t-g">✓ </span><span class="t-w2">found</span> <span class="t-m2">lib/l10n/app_en.arb · app_de.arb</span></div>
+            <div class="t-line"><span class="t-g">✓ </span><span class="t-w2">imported 142 keys → glotfile.json</span></div>
+            <div class="t-line"><span class="t-comment"># one file. commit it.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="beat beat-reverse">
+        <div class="beat-visual">
+          <figure class="shot">
+            <div class="browser">
+              <div class="browser-bar">
+                <span class="dot dot-1"></span><span class="dot dot-2"></span><span class="dot dot-3"></span>
+                <span class="browser-url">127.0.0.1:3001/#editor</span>
+              </div>
+              <img src="assets/screenshots/editor.png" alt="The glotfile editor: one key shown across English (source), Arabic (right-to-left), German, Spanish, French, Japanese and Polish, each row tagged with its review state — reviewed, machine, or needs review." width="3024" height="1746" loading="lazy" decoding="async">
+            </div>
+          </figure>
+        </div>
+        <div class="beat-copy">
+          <p class="beat-number">02</p>
+          <h3>Edit &amp; translate in a local UI</h3>
+          <p>One command starts a web UI on <code>127.0.0.1</code> — search, plurals, RTL, review states. Fill missing locales with the AI provider you already pay for. Context comes from how the string is used in your code, not a guess.</p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="beat-copy">
+          <p class="beat-number">03</p>
+          <h3>Export &amp; commit</h3>
+          <p>Write your platform's native locale files and commit everything. Output is deterministic — stable key order, fixed indent — so a translation change is a small reviewable diff, and an unchanged export is a zero-line one. Safe to run in CI.</p>
+        </div>
+        <div class="beat-visual">
+          <div class="diff-card">
+            <div class="diff-head">git diff — glotfile.json</div>
+            <div class="diff-body">
+              <div class="diff-line">  "export.title": {</div>
+              <div class="diff-line">    "en": "Export formats",</div>
+              <div class="diff-line diff-add">+   "fr": "Formats d'export",</div>
+              <div class="diff-line diff-add">+   "pl": "Formaty eksportu",</div>
+              <div class="diff-line diff-add">+   "ja": "エクスポート形式",</div>
+              <div class="diff-line">  },</div>
+            </div>
+            <div class="diff-foot"><span class="t-prompt">$</span> glotfile export <span class="t-comment">→ lib/l10n/app_fr.arb · lang/fr/app.php</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ui" aria-labelledby="ui-heading">
+    <div class="container">
+      <div class="ui-head">
+        <h2 id="ui-heading">Not a mockup — the actual UI, on localhost.</h2>
+        <p class="section-lede">One <code>npx glotfile</code> opens this on <code>127.0.0.1</code>: dark mode, right-to-left, plurals, a “can I ship?” release gate, and an audit log of every AI call — all reading and writing the one JSON file in your repo.</p>
+      </div>
+      <div class="shots">
+        <figure class="shot">
+          <div class="browser">
+            <div class="browser-bar">
+              <span class="dot dot-1"></span><span class="dot dot-2"></span><span class="dot dot-3"></span>
+              <span class="browser-url">127.0.0.1:3001/#analytics</span>
+            </div>
+            <img src="assets/screenshots/analytics.png" alt="Glotfile analytics: a ‘can I ship?’ release gate and per-locale readiness cards showing translation completion for Arabic, German, Spanish, French, Japanese and Polish." width="3024" height="1746" loading="lazy" decoding="async">
+          </div>
+          <figcaption><strong>Analytics</strong> — a “can I ship?” release gate and per-locale readiness at a glance.</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="browser">
+            <div class="browser-bar">
+              <span class="dot dot-1"></span><span class="dot dot-2"></span><span class="dot dot-3"></span>
+              <span class="browser-url">127.0.0.1:3001/#activity</span>
+            </div>
+            <img src="assets/screenshots/activity.png" alt="Glotfile activity log: AI translation batches tagged with the model used, an expandable system prompt, and before-and-after diffs for each edited string." width="3024" height="1746" loading="lazy" decoding="async">
+          </div>
+          <figcaption><strong>Activity</strong> — every edit and AI batch, with before → after diffs and the model used.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="band" aria-labelledby="features-heading">
+    <div class="container">
+      <h2 id="features-heading">Built like a tool, not a platform.</h2>
+      <div class="features-grid">
+        <article class="card">
+          <p class="feature-glyph" aria-hidden="true">$_</p>
+          <h3>Zero infrastructure</h3>
+          <p class="card-body">No server, no sync, no account. One npx command and you're editing. Nothing to host, nothing to cancel.</p>
+        </article>
+        <article class="card">
+          <p class="feature-glyph" aria-hidden="true">+/−</p>
+          <h3>Git-native</h3>
+          <p class="card-body">One deterministic state file, committed with your code. Review translations the way you review everything else: in the PR.</p>
+        </article>
+        <article class="card">
+          <p class="feature-glyph" aria-hidden="true">✦</p>
+          <h3>AI translation, your provider</h3>
+          <p class="card-body">Anthropic, OpenAI, Bedrock, OpenRouter, Claude Code — or Ollama, fully offline. Your key, your model, your bill.</p>
+        </article>
+        <article class="card">
+          <p class="feature-glyph" aria-hidden="true">{}</p>
+          <h3>Speaks your framework</h3>
+          <p class="card-body">First-class export to Flutter ARB, Laravel PHP, i18next and vue-i18n JSON, gettext .po, and Apple .stringsdict.</p>
+        </article>
+        <article class="card">
+          <p class="feature-glyph" aria-hidden="true">✓</p>
+          <h3>Quality tooling built in</h3>
+          <p class="card-body">Placeholder and spelling lints, unused-key scanning against your codebase, and a CI check that fails when locales drift.</p>
+        </article>
+        <article class="card">
+          <p class="feature-glyph" aria-hidden="true">≡</p>
+          <h3>Deterministic by design</h3>
+          <p class="card-body">Stable key order, fixed indent, one trailing newline. Re-export with no changes and git sees nothing at all.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Supported formats and AI providers">
+    <div class="container stack-strip">
+      <div class="stack-col">
+        <p class="stack-label">EXPORTS TO</p>
+        <ul class="badge-list">
+          <li>Flutter ARB</li>
+          <li>Laravel PHP</li>
+          <li>i18next JSON</li>
+          <li>vue-i18n</li>
+          <li>gettext .po</li>
+          <li>Apple .stringsdict</li>
+        </ul>
+      </div>
+      <div class="stack-col">
+        <p class="stack-label">TRANSLATES WITH</p>
+        <ul class="badge-list">
+          <li>Anthropic</li>
+          <li>OpenAI</li>
+          <li>AWS Bedrock</li>
+          <li>OpenRouter</li>
+          <li>Ollama (local)</li>
+          <li>Claude Code</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="trust-heading">
+    <div class="container trust">
+      <div class="trust-copy">
+        <h2 id="trust-heading">Local-first means local.</h2>
+        <p>The server binds to <code>127.0.0.1</code> and nowhere else. Your strings travel exactly two places: your git remote, and the AI provider you configure — point it at Ollama and it's just git.</p>
+        <p>No telemetry, no account, no copy of your strings on anyone else's disk. Your git history is the audit log.</p>
+      </div>
+      <div class="trust-locales">
+        <div class="locale-line locale-source"><span class="locale-code">en</span><span class="locale-string">Your translations belong in your repo.</span></div>
+        <div class="locale-line"><span class="locale-code">fr</span><span class="locale-string" lang="fr">Vos traductions appartiennent à votre dépôt.</span></div>
+        <div class="locale-line"><span class="locale-code">de</span><span class="locale-string" lang="de">Deine Übersetzungen gehören in dein Repo.</span></div>
+        <div class="locale-line"><span class="locale-code">pl</span><span class="locale-string" lang="pl">Twoje tłumaczenia należą do twojego repo.</span></div>
+        <div class="locale-line"><span class="locale-code">ja</span><span class="locale-string" lang="ja">翻訳はあなたのリポジトリに。</span></div>
+        <div class="locale-line"><span class="locale-code">ar</span><span class="locale-string" lang="ar" dir="rtl">ترجماتك مكانها مستودعك.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-cta">
+      <h2>Run it where your code lives.</h2>
+      <div class="cmd-pill cmd-pill-large">
+        <span class="prompt" aria-hidden="true">$</span>
+        <code>npx glotfile</code>
+        <button class="copy-btn" type="button" data-copy="npx glotfile">copy</button>
+      </div>
+      <a class="footer-npm-link" href="https://www.npmjs.com/package/glotfile">npmjs.com/package/glotfile ↗</a>
+    </div>
+    <div class="footer-meta">
+      <span>glotfile · MIT licensed</span>
+      <span>built for people who'd rather commit than sync</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

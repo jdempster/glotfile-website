@@ -1,0 +1,734 @@
+{
+  "$schema": "https://glotfile.dev/schema/v1.json",
+  "config": {
+    "autoExport": true,
+    "format": {
+      "finalNewline": true,
+      "indent": 2,
+      "sortKeys": true
+    },
+    "locales": [
+      "en",
+      "de",
+      "es",
+      "fr",
+      "ja",
+      "ar",
+      "pl"
+    ],
+    "outputs": [
+      {
+        "adapter": "i18next-json",
+        "path": "src/locales/{locale}.json"
+      },
+      {
+        "adapter": "flutter-arb",
+        "path": "lib/l10n/app_{locale}.arb"
+      }
+    ],
+    "sourceLocale": "en",
+    "spelling": {
+      "customWords": [
+        "Glotfile"
+      ]
+    }
+  },
+  "glossary": [
+    {
+      "caseSensitive": true,
+      "doNotTranslate": true,
+      "notes": "Product name — never translate or inflect.",
+      "term": "Acme Drive"
+    },
+    {
+      "doNotTranslate": true,
+      "notes": "Plan tier, keep in English.",
+      "term": "Pro"
+    }
+  ],
+  "keys": {
+    "common.cancel": {
+      "values": {
+        "en": {
+          "state": "source",
+          "value": "Cancel"
+        },
+        "de": {
+          "state": "reviewed",
+          "value": "Abbrechen"
+        },
+        "es": {
+          "state": "reviewed",
+          "value": "Cancelar"
+        },
+        "fr": {
+          "state": "reviewed",
+          "value": "Annuler"
+        },
+        "ja": {
+          "state": "reviewed",
+          "value": "キャンセル"
+        },
+        "ar": {
+          "state": "reviewed",
+          "value": "إلغاء"
+        },
+        "pl": {
+          "state": "reviewed",
+          "value": "Anuluj"
+        }
+      },
+      "tags": [
+        "common",
+        "button"
+      ]
+    },
+    "common.save": {
+      "values": {
+        "en": {
+          "state": "source",
+          "value": "Save"
+        },
+        "de": {
+          "state": "reviewed",
+          "value": "Speichern"
+        },
+        "es": {
+          "state": "reviewed",
+          "value": "Guardar"
+        },
+        "fr": {
+          "state": "reviewed",
+          "value": "Enregistrer"
+        },
+        "ja": {
+          "state": "reviewed",
+          "value": "保存"
+        },
+        "ar": {
+          "state": "reviewed",
+          "value": "حفظ"
+        },
+        "pl": {
+          "state": "reviewed",
+          "value": "Zapisz"
+        }
+      },
+      "tags": [
+        "common",
+        "button"
+      ]
+    },
+    "common.delete": {
+      "values": {
+        "en": {
+          "state": "source",
+          "value": "Delete"
+        },
+        "de": {
+          "state": "reviewed",
+          "value": "Löschen"
+        },
+        "es": {
+          "source": "ai",
+          "state": "machine",
+          "updatedAt": "2026-05-17T10:05:00.000Z",
+          "value": "Eliminar"
+        },
+        "fr": {
+          "state": "reviewed",
+          "value": "Supprimer"
+        },
+        "ja": {
+          "source": "ai",
+          "state": "machine",
+          "updatedAt": "2026-05-18T13:20:00.000Z",
+          "value": "削除"
+        },
+        "ar": {
+          "state": "reviewed",
+          "value": "حذف"
+        },
+        "pl": {
+          "state": "reviewed",
+          "value": "Usuń"
+        }
+      },
+      "tags": [
+        "common",
+        "button"
+      ]
+    },
+    "common.confirm": {
+      "values": {
+        "en": {
+          "state": "source",
+          "value": "Confirm"
+        },
+        "de": {
+          "state": "reviewed",
+          "value": "Bestätigen"
+        },
+        "es": {
+          "state": "reviewed",
+          "value": "Confirmar"
+        },
+        "fr": {
+          "state": "reviewed",
+          "value": "Confirmer"
+        },
+        "ja": {
+          "state": "reviewed",
+          "value": "確認"
+        },
+        "ar": {
+          "source": "ai",
+          "state": "machine",
+          "updatedAt": "2026-05-19T16:45:00.000Z",
+          "value": "تأكيد"
+        },
+        "pl": {
+          "state": "reviewed",
+          "value": "Potwierdź"
+        }
+      },
+      "tags": [
+        "common",
+        "button"
+      ]
+    },
+    "nav.dashboard": {
+      "values": {
+        "en": {
+          "state": "source",
+          "value": "Dashboard"
+        },
+        "de": {
+          "state": "reviewed",
+          "value": "Übersicht"
+        },
+        "es": {
+          "state": "reviewed",
+          "value": "Panel"
+        },
+        "fr": {
+          "state": "reviewed",
+          "value": "Tableau de bord"
+        },
+        "ja": {
+          "state": "reviewed",
+          "value": "ダッシュボード"
+        },
+        "ar": {
+          "state": "reviewed",
+          "value": "لوحة التحكم"
+        },
+        "pl": {
+          "state": "reviewed",
+          "value": "Pulpit"
+        }
+      },
+      "tags": [
+        "nav"
+      ]
+    },
+    "nav.files": {
+      "values": {
+        "en": {
+          "state": "source",
+          "value": "Files"
+        },
+        "de": {
+          "state": "reviewed",
+          "value": "Dateien"
+        },
+        "es": {
+          "state": "reviewed",
+          "value": "Archivos"
+        },
+        "fr": {
+          "state": "reviewed",
+          "value": "Fichiers"
+        },
+        "ja": {
+          "state": "reviewed",
+          "value": "ファイル"
+        },
+        "ar": {
+          "state": "reviewed",
+          "value": "الملفات"
+        },
+        "pl": {
+          "state": "reviewed",
+          "value": "Pliki"
+        }
+      },
+      "tags": [
+        "nav"
+      ]
+    },
+    "nav.settings": {
+      "values": {
+        "en": {
+          "state": "source",
+          "value": "Settings"
+        },
+        "de": {
+          "state": "reviewed",
+          "value": "Einstellungen"
+        },
+        "es": {
+          "state": "reviewed",
+          "value": "Ajustes"
+        },
+        "fr": {
+          "state": "reviewed",
+          "value": "Paramètres"
+        },
+        "ja": {
+          "state": "reviewed",
+          "value": "設定"
+        },
+        "ar": {
+          "state": "reviewed",
+          "value": "الإعدادات"
+        },
+        "pl": {
+          "state": "reviewed",
+          "value": "Ustawienia"
+        }
+      },
+      "tags": [
+        "nav"
+      ]
+    },
+    "files.count": {
+      "values": {
+        "en": {
+          "state": "source",
+          "value": "{count, plural, one {# file} other {# files}}"
+        },
+        "de": {
+          "state": "reviewed",
+          "value": "{count, plural, one {# Datei} other {# Dateien}}"
+        },
+        "es": {
+          "source": "ai",
+          "state": "machine",
+          "updatedAt": "2026-05-20T08:00:00.000Z",
+          "value": "{count, plural, one {# archivo} other {# archivos}}"
+        },
+        "fr": {
+          "state": "reviewed",
+          "value": "{count, plural, one {# fichier} other {# fichiers}}"
+        }
+      },
+      "context": "Count shown above the file list. {count} is the number of files in the current folder.",
+      "tags": [
+        "files",
+        "plural"
+      ]
+    },
+    "files.upload": {
+      "values": {
+        "en": {
+          "state": "source",
+          "value": "Upload files"
+        },
+        "de": {
+          "state": "reviewed",
+          "value": "Dateien hochladen"
+        },
+        "es": {
+          "state": "reviewed",
+          "value": "Subir archivos"
+        },
+        "fr": {
+          "state": "reviewed",
+          "value": "Téléverser des fichiers"
+        },
+        "ja": {
+          "source": "ai",
+          "state": "machine",
+          "updatedAt": "2026-05-21T09:14:00.000Z",
+          "value": "ファイルをアップロード"
+        },
+        "ar": {
+          "state": "reviewed",
+          "value": "رفع الملفات"
+        },
+        "pl": {
+          "source": "ai",
+          "state": "machine",
+          "updatedAt": "2026-05-22T11:30:00.000Z",
+          "value": "Prześlij pliki"
+        }
+      },
+      "tags": [
+        "files",
+        "button"
+      ]
+    },
+    "files.uploadProgress": {
+      "values": {
+        "en": {
+          "state": "source",
+          "value": "Uploading {count} of {total}…"
+        },
+        "de": {
+          "state": "reviewed",
+          "value": "Lade {count} von {total} hoch…"
+        },
+        "es": {
+          "state": "needs-review",
+          "value": "Subiendo {count} de {total}…"
+        },
+        "fr": {
+          "state": "reviewed",
+          "value": "Téléversement de {count} sur {total}…"
+        }
+      },
+      "context": "Progress label during upload. {count} of {total} files completed.",
+      "tags": [
+        "files",
+        "placeholder"
+      ]
+    },
+    "files.empty": {
+      "values": {
+        "en": {
+          "state": "source",
+          "value": "No files yet — drag and drop to upload."
+        },
+        "de": {
+          "state": "reviewed",
+          "value": "Noch keine Dateien – zum Hochladen hierher ziehen."
+        },
+        "es": {
+          "source": "ai",
+          "state": "machine",
+          "updatedAt": "2026-05-23T07:00:00.000Z",
+          "value": "Aún no hay archivos: arrastra y suelta para subir."
+        },
+        "fr": {
+          "state": "reviewed",
+          "value": "Aucun fichier pour le moment – glissez-déposez pour téléverser."
+        }
+      },
+      "context": "Empty state shown when a folder has no files.",
+      "tags": [
+        "files"
+      ]
+    },
+    "files.shareLink": {
+      "values": {
+        "en": {
+          "state": "source",
+          "value": "Copy share link"
+        },
+        "de": {
+          "state": "reviewed",
+          "value": "Freigabelink kopieren"
+        },
+        "es": {
+          "state": "reviewed",
+          "value": "Copiar enlace para compartir"
+        },
+        "fr": {
+          "state": "reviewed",
+          "value": "Copier le lien de partage"
+        },
+        "ar": {
+          "source": "ai",
+          "state": "machine",
+          "updatedAt": "2026-05-24T14:00:00.000Z",
+          "value": "نسخ رابط المشاركة"
+        }
+      },
+      "tags": [
+        "files",
+        "button"
+      ]
+    },
+    "account.email.change.confirmed.description": {
+      "values": {
+        "en": {
+          "state": "source",
+          "value": "Your email address has been updated successfully. You can now sign in with your new address."
+        },
+        "de": {
+          "source": "ai",
+          "state": "machine",
+          "updatedAt": "2026-05-17T10:05:00.000Z",
+          "value": "Ihre E-Mail-Adresse wurde erfolgreich aktualisiert. Sie können sich jetzt mit Ihrer neuen Adresse anmelden."
+        },
+        "fr": {
+          "state": "reviewed",
+          "value": "Votre adresse e-mail a été mise à jour avec succès. Vous pouvez maintenant vous connecter avec votre nouvelle adresse."
+        }
+      },
+      "context": "Body text shown on the email-change confirmation page after the user clicks the link.",
+      "tags": [
+        "account",
+        "email"
+      ]
+    },
+    "account.signOut": {
+      "values": {
+        "en": {
+          "state": "source",
+          "value": "Sign out"
+        },
+        "de": {
+          "state": "reviewed",
+          "value": "Abmelden"
+        },
+        "es": {
+          "state": "reviewed",
+          "value": "Cerrar sesión"
+        },
+        "fr": {
+          "state": "reviewed",
+          "value": "Se déconnecter"
+        },
+        "ja": {
+          "state": "reviewed",
+          "value": "サインアウト"
+        },
+        "ar": {
+          "state": "reviewed",
+          "value": "تسجيل الخروج"
+        },
+        "pl": {
+          "state": "reviewed",
+          "value": "Wyloguj się"
+        }
+      },
+      "tags": [
+        "account",
+        "button"
+      ]
+    },
+    "billing.plan.pro": {
+      "values": {
+        "en": {
+          "state": "source",
+          "value": "Pro plan"
+        },
+        "de": {
+          "state": "reviewed",
+          "value": "Pro-Tarif"
+        },
+        "es": {
+          "state": "reviewed",
+          "value": "Plan Pro"
+        },
+        "fr": {
+          "state": "reviewed",
+          "value": "Forfait Pro"
+        },
+        "pl": {
+          "source": "ai",
+          "state": "machine",
+          "updatedAt": "2026-05-18T13:20:00.000Z",
+          "value": "Plan Pro"
+        }
+      },
+      "tags": [
+        "billing"
+      ]
+    },
+    "billing.upgrade": {
+      "values": {
+        "en": {
+          "state": "source",
+          "value": "Upgrade plan"
+        },
+        "de": {
+          "state": "needs-review",
+          "value": "Tarif upgraden"
+        },
+        "es": {
+          "state": "reviewed",
+          "value": "Mejorar plan"
+        },
+        "fr": {
+          "state": "reviewed",
+          "value": "Améliorer le forfait"
+        },
+        "ar": {
+          "source": "ai",
+          "state": "machine",
+          "updatedAt": "2026-05-19T16:45:00.000Z",
+          "value": "ترقية الخطة"
+        }
+      },
+      "tags": [
+        "billing",
+        "button"
+      ]
+    },
+    "billing.seatsUsed": {
+      "values": {
+        "en": {
+          "state": "source",
+          "value": "{count, plural, one {# seat used} other {# seats used}}"
+        },
+        "de": {
+          "state": "reviewed",
+          "value": "{count, plural, one {# Platz belegt} other {# Plätze belegt}}"
+        },
+        "fr": {
+          "source": "ai",
+          "state": "machine",
+          "updatedAt": "2026-05-20T08:00:00.000Z",
+          "value": "{count, plural, one {# siège utilisé} other {# sièges utilisés}}"
+        }
+      },
+      "context": "Seat usage on the billing page. {count} is seats consumed of the plan limit.",
+      "tags": [
+        "billing",
+        "plural"
+      ]
+    },
+    "editor.title": {
+      "values": {
+        "en": {
+          "state": "source",
+          "value": "Editor"
+        },
+        "de": {
+          "state": "reviewed",
+          "value": "Editor"
+        },
+        "es": {
+          "state": "reviewed",
+          "value": "Editor"
+        },
+        "fr": {
+          "state": "reviewed",
+          "value": "Éditeur"
+        },
+        "ja": {
+          "state": "reviewed",
+          "value": "エディター"
+        },
+        "ar": {
+          "state": "reviewed",
+          "value": "المحرر"
+        },
+        "pl": {
+          "state": "reviewed",
+          "value": "Edytor"
+        }
+      },
+      "tags": [
+        "editor",
+        "nav"
+      ]
+    },
+    "notifications.unread": {
+      "values": {
+        "en": {
+          "state": "source",
+          "value": "{count, plural, one {# unread notification} other {# unread notifications}}"
+        },
+        "de": {
+          "state": "reviewed",
+          "value": "{count, plural, one {# ungelesene Benachrichtigung} other {# ungelesene Benachrichtigungen}}"
+        },
+        "es": {
+          "source": "ai",
+          "state": "machine",
+          "updatedAt": "2026-05-21T09:14:00.000Z",
+          "value": "{count, plural, one {# notificación sin leer} other {# notificaciones sin leer}}"
+        }
+      },
+      "context": "Badge on the bell icon. {count} unread notifications.",
+      "tags": [
+        "notifications",
+        "plural"
+      ]
+    },
+    "errors.network": {
+      "values": {
+        "en": {
+          "state": "source",
+          "value": "Something went wrong. Check your connection and try again."
+        },
+        "de": {
+          "state": "reviewed",
+          "value": "Etwas ist schiefgelaufen. Überprüfe deine Verbindung und versuche es erneut."
+        },
+        "es": {
+          "source": "ai",
+          "state": "machine",
+          "updatedAt": "2026-05-22T11:30:00.000Z",
+          "value": "Algo salió mal. Comprueba tu conexión e inténtalo de nuevo."
+        },
+        "fr": {
+          "state": "reviewed",
+          "value": "Une erreur s’est produite. Vérifiez votre connexion et réessayez."
+        }
+      },
+      "context": "Generic error toast when a request fails.",
+      "tags": [
+        "errors"
+      ]
+    },
+    "errors.notFound": {
+      "values": {
+        "en": {
+          "state": "source",
+          "value": "We couldn’t find that page."
+        },
+        "de": {
+          "state": "reviewed",
+          "value": "Diese Seite wurde nicht gefunden."
+        },
+        "es": {
+          "state": "reviewed",
+          "value": "No encontramos esa página."
+        },
+        "fr": {
+          "state": "reviewed",
+          "value": "Page introuvable."
+        }
+      },
+      "tags": [
+        "errors"
+      ]
+    },
+    "settings.language": {
+      "values": {
+        "en": {
+          "state": "source",
+          "value": "Interface language"
+        },
+        "de": {
+          "state": "reviewed",
+          "value": "Sprache der Oberfläche"
+        },
+        "es": {
+          "source": "ai",
+          "state": "machine",
+          "updatedAt": "2026-05-23T07:00:00.000Z",
+          "value": "Idioma de la interfaz"
+        },
+        "fr": {
+          "state": "reviewed",
+          "value": "Langue de l’interface"
+        },
+        "ja": {
+          "state": "needs-review",
+          "value": "インターフェースの言語"
+        }
+      },
+      "context": "Label for the interface language selector in settings.",
+      "tags": [
+        "settings"
+      ]
+    }
+  },
+  "version": 1
+}
