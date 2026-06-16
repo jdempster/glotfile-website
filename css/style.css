@@ -96,6 +96,36 @@ section:not(.band) { border-top: 1px solid var(--border-soft); }
 
 .accent { color: var(--indigo-bright); }
 
+/* ============ Value strip ============ */
+.value-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 56px;
+  padding: 76px 24px;
+}
+
+.value-item {
+  flex: 1 1 360px;
+  min-width: 0;
+}
+
+.value-lead {
+  margin: 0 0 12px;
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: var(--text-bright);
+}
+
+.value-sub {
+  margin: 0;
+  max-width: 480px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
 /* ============ Nav ============ */
 .nav {
   max-width: 1160px;
@@ -883,6 +913,41 @@ footer { border-top: 1px solid var(--border-soft); }
 .shot figcaption strong {
   font-weight: 600;
   color: var(--text-soft);
+}
+
+/* ============ Responsive: tablet ============ */
+@media (max-width: 768px) {
+  .container { padding: 72px 22px; }
+  .hero { padding: 56px 22px 72px; gap: 40px; }
+  .how { gap: 60px; }
+  .beat { gap: 36px; }
+  h2 { font-size: 28px; margin-bottom: 32px; }
+  .nav-links { gap: 18px; }
+  .value-strip { gap: 32px; padding: 60px 22px; }
+  .stack-strip { gap: 36px; padding: 60px 22px; }
+  .trust { gap: 40px; }
+  .ui-head { margin-bottom: 36px; }
+  .footer-cta { padding: 80px 22px 64px; }
+}
+
+/* ============ Responsive: phone ============ */
+@media (max-width: 600px) {
+  .nav { padding: 16px 18px; gap: 12px; }
+  .nav-links { gap: 14px; }
+  .nav-links a[href^="#"] { display: none; }
+  .container { padding: 56px 20px; }
+  .hero { padding: 40px 20px 56px; gap: 32px; }
+  .hero h1 { font-size: clamp(30px, 8.5vw, 40px); }
+  .hero-lede { font-size: 16.5px; }
+  .value-strip { padding: 52px 20px; }
+  .stack-strip { padding: 52px 20px; }
+  .beat-copy h3 { font-size: 21px; }
+  .terminal-body { padding: 16px; min-height: 0; font-size: 12.5px; }
+  .code-card { padding: 16px 18px; font-size: 12.5px; }
+  .diff-body { font-size: 12.5px; }
+  .footer-cta { padding: 64px 20px 56px; }
+  .footer-meta { font-size: 11px; }
+  section[id] { scroll-margin-top: 72px; }
 }
 
 @media (max-width: 520px) {

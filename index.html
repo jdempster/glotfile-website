@@ -68,6 +68,19 @@
     </div>
   </header>
 
+  <section aria-label="What you get" class="value-section">
+    <div class="container value-strip reveal-group">
+      <div class="value-item">
+        <p class="value-lead">Minutes, not days.</p>
+        <p class="value-sub">Batch-translate a whole locale in one command. New strings come back filled in seconds — not a vendor turnaround cycle — so the diff is ready before you've left the branch.</p>
+      </div>
+      <div class="value-item">
+        <p class="value-lead">No minimum cost.</p>
+        <p class="value-sub">No per-seat fee, no monthly floor, no per-word markup. You pay your own AI provider by the token — or point it at Ollama and translate for nothing at all.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="band" aria-labelledby="problem-heading">
     <div class="container container-narrow">
       <h2 id="problem-heading">Two ways this usually goes.</h2>
@@ -207,8 +220,13 @@
         </article>
         <article class="card">
           <p class="feature-glyph" aria-hidden="true">//</p>
-          <h3>Context, not guesswork</h3>
-          <p class="card-body">Every key can carry context — a usage note, the code locations that reference it, even a screenshot. Glotfile sends that to the model, so an ambiguous “Post” comes back as the right verb or noun.</p>
+          <h3>Context &amp; glossary, always read</h3>
+          <p class="card-body">Every key can carry context — a usage note, the code locations that reference it, even a screenshot — and your glossary rides along: brand names stay verbatim, fixed terms stay fixed. All of it is sent on every translation, so an ambiguous “Post” comes back as the right verb or noun.</p>
+        </article>
+        <article class="card">
+          <p class="feature-glyph" aria-hidden="true">↔</p>
+          <h3>Translations that fit</h3>
+          <p class="card-body">Give a key a character budget and the model is told the limit, so a translation comes back short enough for the button — German included. The <code>max-length</code> check then flags anything that ever drifts over.</p>
         </article>
         <article class="card">
           <p class="feature-glyph" aria-hidden="true">{}</p>
