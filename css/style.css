@@ -188,6 +188,18 @@ section:not(.band) { border-top: 1px solid var(--border-soft); }
   color: var(--indigo);
 }
 
+.nav-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.nav-github:hover { color: var(--text); }
+
 /* ============ Hero ============ */
 .hero {
   max-width: 1160px;
@@ -826,6 +838,13 @@ footer { border-top: 1px solid var(--border-soft); }
 
 .footer-npm-link:hover { color: var(--text); }
 
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 28px;
+}
+
 .footer-meta {
   max-width: 1160px;
   margin: 0 auto;
@@ -935,6 +954,7 @@ footer { border-top: 1px solid var(--border-soft); }
   .nav { padding: 16px 18px; gap: 12px; }
   .nav-links { gap: 14px; }
   .nav-links a[href^="#"] { display: none; }
+  .nav-github span { display: none; }
   .container { padding: 56px 20px; }
   .hero { padding: 40px 20px 56px; gap: 32px; }
   .hero h1 { font-size: clamp(30px, 8.5vw, 40px); }
