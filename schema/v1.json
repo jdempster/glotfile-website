@@ -21,6 +21,11 @@
       "description": "Do-not-translate terms and forced per-locale translations, injected into every AI request.",
       "items": { "$ref": "#/definitions/GlossaryEntry" }
     },
+    "glossarySuggestions": {
+      "type": "array",
+      "description": "AI-proposed glossary candidates awaiting review (see `glotfile suggest-glossary`). Dismissed entries are kept as tombstones so re-runs never resurface them.",
+      "items": { "$ref": "#/definitions/GlossarySuggestion" }
+    },
     "keys": {
       "type": "object",
       "description": "Flat map of dot-notation keys (e.g. \"auth.signIn.button\") to their entries.",
@@ -228,12 +233,35 @@
         "term": { "type": "string" },
         "doNotTranslate": { "type": "boolean" },
         "caseSensitive": { "type": "boolean" },
+        "wholeWord": {
+          "type": "boolean",
+          "description": "Apply the term only when it appears as a standalone word in the source, not inside a larger word (e.g. \"Pro\" won't match \"Process\"). Defaults to true; set false to match inside larger source words."
+        },
         "translations": {
           "type": "object",
           "description": "Forced translation per locale.",
           "additionalProperties": { "type": "string" }
         },
         "notes": { "type": "string" }
+      }
+    },
+    "GlossarySuggestion": {
+      "type": "object",
+      "required": ["term", "status"],
+      "properties": {
+        "term": { "type": "string" },
+        "note": {
+          "type": "string",
+          "description": "Rationale written by the model; becomes GlossaryEntry.notes on accept."
+        },
+        "doNotTranslate": { "type": "boolean" },
+        "caseSensitive": { "type": "boolean" },
+        "wholeWord": { "type": "boolean" },
+        "status": {
+          "type": "string",
+          "enum": ["pending", "dismissed"],
+          "description": "\"pending\" awaits review; \"dismissed\" is a tombstone so re-runs never resurface it."
+        }
       }
     },
     "KeyEntry": {

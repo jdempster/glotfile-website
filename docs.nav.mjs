@@ -18,7 +18,7 @@ export const SECTIONS = [
     title: 'Frameworks',
     dir: 'Frameworks',
     slug: 'frameworks',
-    pages: ['Flutter', 'Laravel', 'Vue I18n', 'Angular', 'Rails', 'Apple'],
+    pages: ['Flutter', 'Laravel', 'Vue I18n', 'Next.js (next-intl)', 'Angular', 'Rails', 'Apple'],
   },
   {
     title: 'Core concepts',
