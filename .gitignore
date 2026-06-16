@@ -3,6 +3,9 @@ node_modules/
 # Generated docs site output — built in CI from docs-src/
 docs/
 
+# Local visual-check captures (scripts/screenshot.mjs)
+.screenshots/
+
 # editor / OS cruft
 .idea/
 .vscode/
