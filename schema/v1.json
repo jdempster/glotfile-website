@@ -336,8 +336,7 @@
           "additionalProperties": { "type": "string" }
         },
         "state": { "$ref": "#/definitions/LocaleState" },
-        "source": { "type": "string" },
-        "updatedAt": { "type": "string" }
+        "source": { "type": "string" }
       }
     },
     "LocaleState": {

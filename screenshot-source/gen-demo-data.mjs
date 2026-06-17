@@ -145,12 +145,6 @@ const KEYS = {
   },
 };
 
-const machineDates = [
-  '2026-05-17T10:05:00.000Z', '2026-05-18T13:20:00.000Z', '2026-05-19T16:45:00.000Z',
-  '2026-05-20T08:00:00.000Z', '2026-05-21T09:14:00.000Z', '2026-05-22T11:30:00.000Z',
-  '2026-05-23T07:00:00.000Z', '2026-05-24T14:00:00.000Z',
-];
-let dateIdx = 0;
 
 function buildValues(spec) {
   const values = {};
@@ -166,7 +160,6 @@ function buildValues(spec) {
       values[loc] = {
         source: 'ai',
         state: 'machine',
-        updatedAt: machineDates[dateIdx++ % machineDates.length],
         value,
       };
     } else {
