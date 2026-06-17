@@ -200,6 +200,18 @@ section:not(.band) { border-top: 1px solid var(--border-soft); }
 
 .nav-github:hover { color: var(--text); }
 
+.nav-sponsor {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+  color: oklch(0.72 0.16 5);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.nav-sponsor:hover { color: oklch(0.8 0.18 5); }
+
 /* ============ Hero ============ */
 .hero {
   max-width: 1160px;
@@ -838,6 +850,9 @@ footer { border-top: 1px solid var(--border-soft); }
 
 .footer-npm-link:hover { color: var(--text); }
 
+.footer-sponsor-link { color: oklch(0.72 0.16 5); }
+.footer-sponsor-link:hover { color: oklch(0.8 0.18 5); }
+
 .footer-links {
   display: flex;
   flex-wrap: wrap;
@@ -954,7 +969,8 @@ footer { border-top: 1px solid var(--border-soft); }
   .nav { padding: 16px 18px; gap: 12px; }
   .nav-links { gap: 14px; }
   .nav-links a[href^="#"] { display: none; }
-  .nav-github span { display: none; }
+  .nav-github span,
+  .nav-sponsor span { display: none; }
   .container { padding: 56px 20px; }
   .hero { padding: 40px 20px 56px; gap: 32px; }
   .hero h1 { font-size: clamp(30px, 8.5vw, 40px); }
