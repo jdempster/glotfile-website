@@ -205,12 +205,13 @@ section:not(.band) { border-top: 1px solid var(--border-soft); }
   align-items: center;
   gap: 7px;
   font-size: 14px;
-  color: oklch(0.72 0.16 5);
+  color: var(--text-muted);
   text-decoration: none;
   transition: color 0.15s;
 }
 
-.nav-sponsor:hover { color: oklch(0.8 0.18 5); }
+.nav-sponsor svg { color: oklch(0.7 0.17 5); }
+.nav-sponsor:hover { color: var(--text); }
 
 /* ============ Hero ============ */
 .hero {
@@ -850,8 +851,9 @@ footer { border-top: 1px solid var(--border-soft); }
 
 .footer-npm-link:hover { color: var(--text); }
 
-.footer-sponsor-link { color: oklch(0.72 0.16 5); }
-.footer-sponsor-link:hover { color: oklch(0.8 0.18 5); }
+.footer-sponsor-link { color: var(--text-muted); }
+.footer-sponsor-link .heart { color: oklch(0.7 0.17 5); }
+.footer-sponsor-link:hover { color: var(--text); }
 
 .footer-links {
   display: flex;
