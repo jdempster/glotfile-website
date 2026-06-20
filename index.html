@@ -22,6 +22,7 @@
       <div class="nav-links">
         <a class="nav-link" href="#how">How it works</a>
         <a class="nav-link" href="#ui">The UI</a>
+        <a class="nav-link" href="#lingo">Lingo</a>
         <a class="nav-link" href="#features">Features</a>
         <a class="nav-link" href="/docs/">Docs</a>
         <a class="nav-github" href="https://github.com/jdempster/glotfile" aria-label="Glotfile on GitHub">
@@ -202,6 +203,64 @@
     </div>
   </section>
 
+  <section id="lingo" aria-labelledby="lingo-heading">
+    <div class="container">
+      <div class="ui-head">
+        <h2 id="lingo-heading">Lingo knows your repo.</h2>
+        <p class="section-lede">Lingo is an AI assistant built into the UI. It reads your code and your string catalogue, then helps you sharpen the things that make machine translation good — context, glossary, tags, length budgets. Press <code>⌘/Ctrl&nbsp;+&nbsp;J</code>, say what you want, and it proposes the edits for you to approve. It never quietly rewrites your translations.</p>
+      </div>
+      <div class="lingo-layout reveal-group">
+        <div class="lingo-visual">
+          <div class="chat-card">
+            <div class="chat-head">
+              <span class="chat-spark" aria-hidden="true">✦</span>
+              <span class="chat-title">Lingo</span>
+              <span class="chat-meta">claude · reading your repo</span>
+            </div>
+            <div class="chat-body">
+              <div class="chat-msg chat-user">The “feed” keys keep coming back wrong in German. What's going on?</div>
+              <div class="chat-msg chat-lingo">
+                <p>Two different senses share the word. <code>plant.feed.cta</code> is used in <span class="chat-path">PlantCareScreen.tsx</span> — that's fertilising a plant. <code>home.feed.title</code> is the activity stream.</p>
+                <p>Want me to add per-key context and a glossary note so the model stops conflating them?</p>
+                <div class="chat-actions"><span class="chat-approve">Approve</span></div>
+              </div>
+              <div class="chat-msg chat-user">Yes, go ahead.</div>
+              <div class="chat-msg chat-lingo chat-done">
+                <p class="chat-step">✓ context added to <code>plant.feed.cta</code></p>
+                <p class="chat-step">✓ context added to <code>home.feed.title</code></p>
+                <p class="chat-step">✓ glossary: “feed” → noted plant vs. social sense</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lingo-copy">
+          <ul class="lingo-points">
+            <li>
+              <span class="lingo-point-glyph" aria-hidden="true">✦</span>
+              <p class="lingo-point-body"><strong>Reads your codebase</strong><span>Greps your source and opens files to see how a string is actually used — so its suggestions are grounded, not guessed.</span></p>
+            </li>
+            <li>
+              <span class="lingo-point-glyph" aria-hidden="true">//</span>
+              <p class="lingo-point-body"><strong>Builds the context, not the translation</strong><span>Per-key context, glossary terms, tags and length budgets — the metadata every translation is conditioned on.</span></p>
+            </li>
+            <li>
+              <span class="lingo-point-glyph" aria-hidden="true">↵</span>
+              <p class="lingo-point-body"><strong>One approval, whole task</strong><span>Agree once and Lingo carries out a multi-step change in a single pass, then shows you exactly what it touched.</span></p>
+            </li>
+            <li>
+              <span class="lingo-point-glyph" aria-hidden="true">→</span>
+              <p class="lingo-point-body"><strong>Click through to any key</strong><span>Every key Lingo mentions is a link — jump straight to it in the editor.</span></p>
+            </li>
+            <li>
+              <span class="lingo-point-glyph" aria-hidden="true">⚑</span>
+              <p class="lingo-point-body"><strong>Suggests, never overrides</strong><span>Lingo won't write or review translations behind your back. The wording stays yours.</span></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="features" class="band" aria-labelledby="features-heading">
     <div class="container">
       <h2 id="features-heading">Built like a tool, not a platform.</h2>
@@ -227,6 +286,11 @@
           <p class="card-body">Anthropic, OpenAI, Bedrock, OpenRouter, Claude Code — or Ollama, fully offline. Your key, your model, your bill.</p>
         </article>
         <article class="card">
+          <p class="feature-glyph" aria-hidden="true">≫</p>
+          <h3>Half-price batch translation</h3>
+          <p class="card-body">Send a whole locale through Anthropic's Batch API at roughly half the per-token cost. Glotfile tracks the job and applies the results when it lands — kick it off and walk away.</p>
+        </article>
+        <article class="card">
           <p class="feature-glyph" aria-hidden="true">//</p>
           <h3>Context &amp; glossary, always read</h3>
           <p class="card-body">Every key can carry context — a usage note, the code locations that reference it, even a screenshot — and your glossary rides along: brand names stay verbatim, fixed terms stay fixed. All of it is sent on every translation, so an ambiguous “Post” comes back as the right verb or noun.</p>
@@ -239,7 +303,7 @@
         <article class="card">
           <p class="feature-glyph" aria-hidden="true">{}</p>
           <h3>Speaks your framework</h3>
-          <p class="card-body">First-class export to Flutter ARB, Laravel PHP, i18next &amp; vue-i18n JSON, Angular XLIFF, Rails YAML, gettext .po, and Apple .strings/.stringsdict.</p>
+          <p class="card-body">First-class export to Flutter ARB, Laravel PHP, i18next, vue-i18n &amp; next-intl JSON, Angular XLIFF, Rails YAML, gettext .po, and Apple .strings/.stringsdict.</p>
         </article>
         <article class="card">
           <p class="feature-glyph" aria-hidden="true">✓</p>
@@ -264,6 +328,7 @@
           <li>Laravel PHP</li>
           <li>i18next JSON</li>
           <li>vue-i18n JSON</li>
+          <li>next-intl JSON</li>
           <li>Angular XLIFF</li>
           <li>Rails YAML</li>
           <li>gettext .po</li>

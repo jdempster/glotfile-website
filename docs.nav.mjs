@@ -37,7 +37,7 @@ export const SECTIONS = [
     title: 'Web UI',
     dir: 'Web UI',
     slug: 'web-ui',
-    pages: ['Web UI Overview', 'Editor', 'Analytics', 'Screenshots', 'Settings', 'AI Log'],
+    pages: ['Web UI Overview', 'Lingo', 'Editor', 'Analytics', 'Screenshots', 'Settings', 'AI Log'],
   },
   {
     title: 'CLI',
